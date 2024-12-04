@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  nginx-rtmp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "1935:1935"  # RTMP port
+      - "80:80"      # HTTP port for HLS
+    volumes:
+      - ./hls:/mnt/hls
+      - ./rtmp_logs:/mnt/rtmp_logs
